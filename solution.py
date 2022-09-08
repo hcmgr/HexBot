@@ -8,11 +8,11 @@ solution.py
 
 This file is a template you should use to implement your solution.
 
-You should implement 
+You should implement each section below which contains a TODO comment.
 
 COMP3702 2022 Assignment 2 Support Code
 
-Last updated by njc 31/08/22
+Last updated by njc 08/09/22
 """
 
 
@@ -157,59 +157,6 @@ class Solver:
         # In order to ensure compatibility with tester, you should avoid adding additional arguments to this function.
         #
         pass
-
-    # === Monte Carlo Tree Search ======================================================================================
-
-    def mcts_initialise(self):
-        """
-        Initialise any variables required before the start of Monte-Carlo Tree Search.
-        """
-        #
-        # TODO: Implement any initialisation for MCTS (e.g. creating a Q-value table) here. You should not
-        #  perform MCTS simulations in this method.
-        #
-        # In order to ensure compatibility with tester, you should avoid adding additional arguments to this function.
-        #
-        pass
-
-    def mcts_simulate(self, state: State):
-        """
-        Perform one simulation of MCTS.
-        :param state: the current state
-        """
-        #
-        # TODO: Implement code to perform a single MCTS simulation (i.e. starting from the given state, simulate until a
-        #  leaf node is reached, then rollout to estimate future value and back-propagate) here.
-        #
-        # In order to ensure compatibility with tester, you should avoid adding additional arguments to this function.
-        #
-        pass
-
-    def mcts_select_action(self, state: State):
-        """
-        Select an approximately optimal action to perform (based on Q-values computed by MCTS).
-        :param state: current state
-        :return: approximately optimal action to perform for the given state (element of ROBOT_ACTIONS)
-        """
-        #
-        # TODO: Implement code to select an action based on stored Q-values. This is called only at the end of online
-        #  planning.
-        #
-        # In order to ensure compatibility with tester, you should avoid adding additional arguments to this function.
-        #
-        pass
-
-    def mcts_plan_online(self, state: State):
-        """
-        Plan online using MCTS.
-        :param state: current state
-        :return: approximately optimal action to perform for the given state (element of ROBOT_ACTIONS)
-        """
-        # !!! In order to ensure compatibility with tester, you should not modify this method !!!
-        t0 = time.time()
-        while time.time() - t0 < self.environment.online_time_tgt:
-            self.mcts_simulate(state)
-        return self.mcts_select_action(state)
 
     # === Helper Methods ===============================================================================================
     #
