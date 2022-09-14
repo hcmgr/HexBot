@@ -256,9 +256,9 @@ class Environment:
         # chance to drift CW or CCW (apply before selected action)
         r = random.random()
         if r < self.drift_cw_probs[action]:
-            movements.append(SPIN_CW)
+            movements.append(SPIN_RIGHT)
         elif r < self.drift_ccw_probs[action] + self.drift_cw_probs[action]:
-            movements.append(SPIN_CCW)
+            movements.append(SPIN_LEFT)
 
         # selected action
         movements.append(action)
@@ -459,7 +459,7 @@ class Environment:
         """
         Perform the given action on the given state, and return whether the action was successful (i.e. valid and
         collision free), the cost of performing the action, and the resulting new state.
-        :param state:
+        :param state: 
         :param action:
         :param seed:
         :return: (cost [float], next_state [instance of State])
