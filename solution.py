@@ -80,10 +80,6 @@ class Solver:
         newValues = dict()
         newPolicy = dict()
         for s in self.states:
-            if self.environment.is_solved(s):
-                newValues[s] = 0
-                continue
-
             actionValues = dict()
             for a in ROBOT_ACTIONS:
                 totalValue = 0
@@ -92,6 +88,9 @@ class Solver:
                 for stochActions, p in self.get_stoch_actions(a):
                     sNext = s
                     minReward = 0
+                    if self.environment.is_solved(s):
+                        newValues[s] = 0
+                        continue
                     #loop through the list of actions we peform to find the one 
                     #with the minimum reward
                     for miniAction in stochActions:
@@ -100,7 +99,6 @@ class Solver:
                     #set positive reward if in goal state
                     totalValue += p * (minReward + (self.gamma * self.values[sNext]))
                 actionValues[a] = totalValue
-            # break
             newValues[s] = max(actionValues.values())
             newPolicy[s] = self.max_action_value(actionValues)
 
@@ -174,7 +172,7 @@ class Solver:
         #
         # In order to ensure compatibility with tester, you should avoid adding additional arguments to this function.
         #
-        pass
+        return True
 
     def pi_iteration(self):
         """
